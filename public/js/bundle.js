@@ -8478,15 +8478,16 @@ function () {
           case 3:
             res = _context2.sent;
             if (res.data.status === 'success') location.reload(true);
-            _context2.next = 10;
+            _context2.next = 11;
             break;
 
           case 7:
             _context2.prev = 7;
             _context2.t0 = _context2["catch"](0);
+            console.log(_context2.t0.response);
             (0, _alerts.showAlert)('error', 'Error logging out. Try again!');
 
-          case 10:
+          case 11:
           case "end":
             return _context2.stop();
         }
@@ -8607,30 +8608,27 @@ function () {
 
           case 3:
             session = _context.sent;
-            // `http://127.0.0.1:3000/api/v1/bookings/checkout-session/${tourId}`
-            console.log(session); // 2) Create a checkout form + charge the credit card
-
-            _context.next = 7;
+            _context.next = 6;
             return stripe.redirectToCheckout({
               sessionId: session.data.session.id
             });
 
-          case 7:
-            _context.next = 13;
+          case 6:
+            _context.next = 12;
             break;
 
-          case 9:
-            _context.prev = 9;
+          case 8:
+            _context.prev = 8;
             _context.t0 = _context["catch"](0);
             console.log(_context.t0);
             (0, _alerts.showAlert)('error', _context.t0);
 
-          case 13:
+          case 12:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 9]]);
+    }, _callee, null, [[0, 8]]);
   }));
 
   return function bookTour(_x) {
@@ -8930,8 +8928,8 @@ if (loginForm) {
   loginForm.addEventListener('submit', function (e) {
     e.preventDefault();
     var email = document.getElementById('email').value;
-    var password = document.getElementById('password').value;
-    console.log(email, password);
+    var password = document.getElementById('password').value; // console.log(email, password)
+
     (0, _login.login)(email, password);
   });
 }
@@ -8942,8 +8940,8 @@ if (userDataForm) userDataForm.addEventListener('submit', function (e) {
   var form = new FormData();
   form.append('name', document.getElementById('name').value);
   form.append('email', document.getElementById('email').value);
-  form.append('photo', document.getElementById('photo').files[0]);
-  console.log(form);
+  form.append('photo', document.getElementById('photo').files[0]); // console.log(form)
+
   (0, _updateSettings.updateSettings)(form, 'data');
 });
 if (userPasswordForm) userPasswordForm.addEventListener('submit',

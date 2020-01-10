@@ -42,7 +42,7 @@ exports.signup = catchAsync(async (req, res, next) => {
   const newUser = await User.create(req.body)
   // const url = `${req.protocol}://${req.get('host')}/me`
   const url = 'http://localhost:3000/me'
-  console.log(url)
+  // console.log(url)
   await new Email(newUser, url).sendWelcome()
   createSendToken(newUser, 201, res)
 })
@@ -98,7 +98,7 @@ exports.protect = catchAsync(async (req, res, next) => {
 
   //3) Check if user still exists
   const currentUser = await User.findById(decoded.id)
-  console.log('currentUser=', currentUser)
+  // console.log('currentUser=', currentUser)
   if (!currentUser) {
     return next(new AppError('The user belonging to this token no longer exists.', 401))
   }

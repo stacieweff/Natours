@@ -25,7 +25,7 @@ if (loginForm) {
     e.preventDefault()
     const email = document.getElementById('email').value
     const password = document.getElementById('password').value
-    console.log(email, password)
+    // console.log(email, password)
     login(email, password)
   })
 }
@@ -38,7 +38,7 @@ if (userDataForm) userDataForm.addEventListener('submit', e => {
   form.append('name', document.getElementById('name').value)
   form.append('email', document.getElementById('email').value)
   form.append('photo', document.getElementById('photo').files[0])
-  console.log(form)
+  // console.log(form)
   updateSettings(form, 'data')
 })
 

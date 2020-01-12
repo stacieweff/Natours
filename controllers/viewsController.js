@@ -4,10 +4,19 @@ const Booking = require('../models/bookingModel')
 const catchAsync = require('../utils/catchAsync')
 const AppError = require('../utils/appError')
 
-exports.getOverview = catchAsync(async(req, res, next) => {
+exports.alerts = (req, res, next) => {
+  const { alert } = req.query // req.query.alert, destructuring syntax
+  if (alert === 'booking')
+    res.locals.alert =
+      'Your booking was successful! Please check your email for a confirmation. If your booking does not show up immediately, please check back later.'
+
+  next()
+}
+
+exports.getOverview = catchAsync(async (req, res, next) => {
   //1) get tour data from the collection
   const tours = await Tour.find()
-  
+
   //2)Build template
   //3)Render that template using tour data from 1
 
